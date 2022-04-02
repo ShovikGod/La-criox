@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Monoton&display=swap');
+
+h1, h2, h3{
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+}
+
+.btn{
+    transition: all 0.5s ease;
+}
+
+.b-name{
+    color: #fff;
+    /* font-family: 'Monoton', cursive; */
+    font-weight: 400;
+    font-size: 60px;
+}
+
+form{
+    margin-top: 20px;
+}
+
+input[type=text],
+input[type=password],
+input[type=number],
+input[type=email],
+input[type=tel]{
+    background-color: #421399;
+    transition: all 0.5s ease;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #fff; 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #fff; 
+}
+/*====================================*/
+
+/*login signup*/
+.ls{
+    background-image: url("../images/login.gif");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 100vh;
+}
+
+.ls-card{
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-top: 8px solid #fff;
+    -webkit-box-shadow: 0px 7px 19px -5px rgba(0,0,0,0.59);
+    -moz-box-shadow: 0px 7px 19px -5px rgba(0,0,0,0.59);
+    box-shadow: 0px 7px 19px -5px rgba(0,0,0,0.59);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.ls-btn{
+    padding: 0.5rem 2rem;
+    font-size: 1.2rem;
+    font-family: 'Orbitron', sans-serif;
+    /* margin-top: 10px; */
+    font-weight: 600;
+}
+
+label{
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.ext{
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+a{
+    transition: all 0.5s ease;
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+    color: #1ba2f6;
+}
+/*====================================*/

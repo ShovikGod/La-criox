@@ -1,34 +1,41 @@
-<div class="row mt-5">
-  <div class="col-md-6 m-auto">
-    <div class="card card-body">
-      <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>  Login</h1>
-      <% include ./partials/messages %>
-      <form action="/users/login" method="POST">
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            class="form-control"
-            placeholder="Enter Email"
-          />
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            class="form-control"
-            placeholder="Enter Password"
-          />
-        </div>
-        <button type="submit" class="btn btn-primary btn-block">Login</button>
-      </form>
-      <p class="lead mt-4">
-        No Account? <a href="/users/register">Register</a>
-      </p>
+<div class="container-fluid ls">
+  <div class="row align-items-center h-100">
+    <div class="col-md-5 m-auto">
+      <div class="card card-body px-5 pb-4 pt-3 ls-card">
+        <h1 class="b-name mb-5 text-center">La'croix</h1>
+        <h2 class="text-white">Login</h2>
+        <% include ./partials/messages %>
+        <form class="ls-form" action="/users/login" method="POST">
+          <div class="form-group">
+            <label for="email" class="text-white">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-control"
+              placeholder="Enter Email"
+            />
+          </div>
+
+          <div class="form-group mt-3">
+            <label for="password" class="text-white">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-control"
+              placeholder="Enter Password"
+            />
+          </div>
+          <p class="ext mt-2"><a href="/users/forgot-password">Forgot Password?</a></p>
+          <button type="submit" class="btn btn-primary ls-btn">Login</button>
+        </form>
+        
+        <p class="ext mt-5">
+          Not registered yet? <a href="/users/register">Create an account</a>
+        </p>
+      </div>
     </div>
   </div>
 </div>
+

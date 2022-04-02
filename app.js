@@ -42,6 +42,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+// static files
+app.use( express.static( "assets" ) );
+
 // Connect flash
 app.use(flash());
 
