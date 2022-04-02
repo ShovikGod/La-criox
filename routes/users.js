@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 // Load User model
 const User = require('../models/User');
+const Otp = require('../models/Otp')
 const { forwardAuthenticated } = require('../config/auth');
 
 // Login Page
@@ -91,5 +92,79 @@ router.get('/logout', (req, res) => {
   req.flash('success_msg', 'You are logged out');
   res.redirect('/users/login');
 });
+
+// forgot password
+const emailSend= async(req, res)=>{
+  let data= await User.findOne({email: req.body.email});
+  const responseType={};
+  if(data){
+    let otpcode= Math.floor((Math.random()*10000)+1);
+    let otpData= new Otp({
+      email:req.body.email,
+      code: otpcode,
+      expireIn: new Date().getTime + 300*1000
+    })
+    let otpResponse= await otpData.save();
+    responseType.statusText= 'Success';
+    responseType.message= 'Please check your Email';
+  }else{
+    responseType.statusText= 'error';
+    responseType.message= 'Email ID does not exist';
+  }
+  res.status(200).json(responseType);
+}
+
+//change password
+const changePassword = async(req, res)=>{
+  let data=  await Otp.find({email: req.body.email, code: req.body.otpcode});
+  const response={};
+  if(data){
+    let currentTime = new Date().getTime();
+    let diff= data.expireIn - currentTime;
+    if(diff<0){
+      response.message= 'Token Expired';
+      response.statusText='error'
+    }else{
+      let user= await User.findOne({email: req.body.email});
+      user.password= req.body.password;
+      user.save();
+      response.message= 'Password changed Successfully';
+      response.statusText='Success'
+    }
+  }else{
+    response.message= 'Invalid OTP';
+      response.statusText='error'
+  }
+  res.status(200).json(responseType);
+}
+
+//nodemailer
+const mailer= (email,otp)=>{
+  var nodemailer= require('nodemailer');
+  var transporter= nodemailer.createTransport({
+    service: 'gmail',
+    port: 587,
+    secure: false,
+    auth: {
+      user: 'lacroixtechnologies@gmail.com',
+      pass: 'fifabrazil'
+    }
+  });
+
+  var mailOptions={
+    from: 'lacroixtechnologies@gmail.com',
+    to: email,
+    subject: 'Sending Email using node.js',
+    text: 'Thank you sir!'
+  };
+
+  transporter.sendMail(mailOptions, function(error, info){
+    if(error){
+      console.log(error);
+    }else{
+      console.log('Email sent: '+ info.response);
+    }
+  });
+}
 
 module.exports = router;
