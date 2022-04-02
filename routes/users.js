@@ -13,12 +13,15 @@ router.get('/login', forwardAuthenticated, (req, res) => res.render('login'));
 // Register Page
 router.get('/register', forwardAuthenticated, (req, res) => res.render('register'));
 
+// Forgot Password Page
+router.get('/forgot-password', (req, res) => res.render('forgotPassword'));
+
 // Register
 router.post('/register', (req, res) => {
-  const { name, email, password, password2 } = req.body;
+  const { name, email, address, age, password, password2, mobile } = req.body;
   let errors = [];
 
-  if (!name || !email || !password || !password2) {
+  if (!name || !email || !address || !age || !password || !password2 || !age) {
     errors.push({ msg: 'Please enter all fields' });
   }
 
@@ -35,8 +38,11 @@ router.post('/register', (req, res) => {
       errors,
       name,
       email,
+      address,
+      age,
       password,
-      password2
+      password2,
+      mobile
     });
   } else {
     User.findOne({ email: email }).then(user => {
@@ -45,15 +51,21 @@ router.post('/register', (req, res) => {
         res.render('register', {
           errors,
           name,
+          address,
+          age,
           email,
           password,
-          password2
+          password2,
+          mobile
         });
       } else {
         const newUser = new User({
           name,
           email,
-          password
+          address,
+          age,
+          password,
+          mobile
         });
 
         bcrypt.genSalt(10, (err, salt) => {
@@ -92,6 +104,12 @@ router.get('/logout', (req, res) => {
   req.flash('success_msg', 'You are logged out');
   res.redirect('/users/login');
 });
+
+// // Forgot Password
+// router.post('/forgot-password', (req, res, next) => {
+//   const email = req.body.email;
+//   const response = emailSend(email);
+// });
 
 // forgot password
 const emailSend= async(req, res)=>{

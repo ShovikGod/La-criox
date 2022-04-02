@@ -18,11 +18,11 @@ const UserSchema = new mongoose.Schema({
     minimum: 0,
     required: true,
   },
-  gender: {
+  /*gender: {
     type: String,
     enum: ["M", "F", "NA"],
-    required: true,
-  },
+    required: false,
+  },*/
   password: {
     type: String,
     required: true,
