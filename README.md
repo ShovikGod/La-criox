@@ -1,6 +1,6 @@
 # Team032
 
-This is a user login and registration app using Node.js, Express, Passport, Mongoose, EJS and some other packages.
+This webapp securely stores your personal information.
 
 ### Usage
 
