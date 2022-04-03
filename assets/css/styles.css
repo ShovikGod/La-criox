@@ -1,8 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Monoton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900');
 
 h1, h2, h3{
     font-family: 'Orbitron', sans-serif;
     font-weight: 700;
+}
+
+a{
+    text-decoration: none !important;
 }
 
 .btn{
@@ -11,9 +15,18 @@ h1, h2, h3{
 
 .b-name{
     color: #fff;
-    /* font-family: 'Monoton', cursive; */
+    font-family: 'Orbitron', sans-serif;
     font-weight: 400;
     font-size: 60px;
+}
+
+.nav-b-name{
+    display: inline-block;
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    margin: 0;
 }
 
 form{
@@ -40,7 +53,7 @@ input[type=tel]{
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #fff; 
+    background: #5f5f5f; 
     border-radius: 10px;
 }
 
@@ -51,11 +64,20 @@ input[type=tel]{
 
 /*login signup*/
 .ls{
+    background-image: linear-gradient(white, white), url("../images/login.gif");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 100vh;
+    background-blend-mode: saturation;
+}
+
+.ls-w{
     background-image: url("../images/login.gif");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     height: 100vh;
 }
+
 
 .ls-card{
     background: rgba(0, 0, 0, 0.5);
@@ -102,3 +124,54 @@ a:hover{
     color: #1ba2f6;
 }
 /*====================================*/
+
+/* dashboard */
+.d{
+    background-color: #0f002a;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+}
+.profile{
+    overflow-y: auto;
+}
+.d-form{
+    max-width: 1024px;
+}
+.d-fc{
+    font-weight: 600 !important;
+    border-radius: 50px;
+    padding: 1rem 2rem;
+    border: 2px solid #1ba2f6;
+    -webkit-box-shadow: inset 0px 0px 15px 2px rgba(0,0,0,0.62);
+    -moz-box-shadow: inset 0px 0px 15px 2px rgba(0,0,0,0.62);
+    box-shadow: inset 0px 0px 15px 2px rgba(0,0,0,0.62);
+}
+/*====================================*/
+
+.create{
+    font-family: 'Orbitron';
+}
+
+@media only screen and (max-width: 900px) {
+    .b-name{
+        font-size: 40px;
+    }
+    .create{
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .b-name{
+        font-size: 30px;
+    }
+    .create{
+        font-size: 0.8rem;
+    }
+}
+
+.alert-dismissible{
+    padding-right: 1rem !important;
+}

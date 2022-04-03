@@ -1,4 +1,48 @@
-<h1 class="mt-4">Dashboard</h1>
-<p class="lead mb-3">Welcome <%= user.name %></p>
-<%= console.log(user) %>
-<a href="/users/logout" class="btn btn-secondary">Logout</a>
+<div class="container-fluid d">
+    <% include ./partials/navbar %>
+    <div class="profile mx-5 px-5">
+        <h4 class="mt-5">Welcome <%= user.name %></h4>
+        <form class="mx-auto d-form">
+            <div class="form-group">
+              <label class="text-white" for="name">Name</label>
+              <input
+                class="form-control d-fc"
+                value="<%= user.name %>"
+                disabled
+              />
+            </div>
+            <div class="form-group mt-5">
+              <label class="text-white" for="email">Email</label>
+              <input
+                class="form-control d-fc"
+                value="<%= user.email %>"
+                disabled
+              />
+            </div>
+            <div class="form-group mt-5">
+              <label class="text-white" for="address">Address</label>
+              <input
+                class="form-control d-fc"
+                value="<%= user.address %>"
+                disabled
+              />
+            </div>
+            <div class="form-group mt-5">
+              <label class="text-white" for="age">Age</label>
+              <input
+                class="form-control d-fc"
+                value="<%= user.age %>"
+                disabled
+              />
+            </div>
+            <div class="form-group mt-5">
+              <label class="text-white" for="mobile">Mobile</label>
+              <input
+                class="form-control d-fc"
+                value="<%= user.mobile %>"
+                disabled
+              />
+            </div>
+          </form>
+    </div>
+</div>
