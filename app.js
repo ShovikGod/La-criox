@@ -9,7 +9,7 @@ const app = express();
 
 // Passport Config
 require('./config/passport')(passport);
-
+require("dotenv").config();
 // DB Config
 const db = require('./config/keys').mongoURI;
 

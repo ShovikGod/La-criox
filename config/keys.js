@@ -1,4 +1,4 @@
-dbPassword = 'mongodb+srv://shovik:Shovik2000@cluster0.eqir2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+dbPassword = process.env.MONGO_URI || '';
 
 module.exports = {
     mongoURI: dbPassword
