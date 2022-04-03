@@ -6,6 +6,7 @@ const passport = require('passport');
 const User = require('../models/User');
 const Otp = require('../models/Otp')
 const { forwardAuthenticated } = require('../config/auth');
+let localE="";
 
 // Login Page
 router.get('/login', forwardAuthenticated, (req, res) => res.render('login'));
@@ -15,6 +16,9 @@ router.get('/register', forwardAuthenticated, (req, res) => res.render('register
 
 // Forgot Password Page
 router.get('/forgot-password', (req, res) => res.render('forgotPassword'));
+
+// New Password
+router.get('/new-password', (req, res) => res.render('newPassword'));
 
 // Register
 router.post('/register', (req, res) => {
@@ -110,11 +114,7 @@ router.get('/logout', (req, res) => {
   res.redirect('/users/login');
 });
 
-
-
-
-
-// // Forgot Password
+// Forgot Password
 router.post('/forgot-password', (req, res) => {
   const { email, sq, sans } = req.body;
   errors=[];
@@ -142,11 +142,63 @@ router.post('/forgot-password', (req, res) => {
         });
       } 
       else {
-        res.render('newPassword');
+        localE=email;
+        res.redirect('/users/new-password');
       }
     })
-  };
-}
+  }
+});
+
+// New Password
+router.post('/new-password', (req, res) => {
+  const { password, password2 } = req.body;
+  let errors = [];
+  if (!password || !password2) {
+    errors.push({ msg: 'Please enter all fields' });
+  }
+
+  if (password != password2) {
+    errors.push({ msg: 'Passwords do not match' });
+  }
+
+  if (password.length < 6) {
+    errors.push({ msg: 'Password must be at least 6 characters' });
+  }
+
+  if (errors.length > 0) {
+    res.render('newPassword', {
+      errors,
+      localE,
+      password,
+      password2,
+    });
+  } 
+  else {
+    bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash(password, salt, (err, hash) => {
+        if (err) throw err;
+        User.updateOne({ email: localE }, { password: hash }).then(user => {
+          if (user) { 
+            req.flash(
+              'success_msg',
+              'Your password has been changed'
+            );
+          } 
+          else {
+            errors.push('Error');
+          }
+        })
+        .catch(err => console.log(err));
+      });
+    });
+  }
+  req.flash('success_msg', 'Your password has been successfully changed');
+  res.redirect('/users/login');
+});
+
+module.exports = router;
+
+
 
 // forgot password
 // const emailSend= async(req, res)=>{
@@ -221,5 +273,3 @@ router.post('/forgot-password', (req, res) => {
 //     }
 //   });
 // }
-
-module.exports = router;
