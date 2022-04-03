@@ -1,9 +1,9 @@
-<div class="container-fluid d">
+<div class="container-fluid d wow fadeIn" data-wow-duration="1s">
     <% include ./partials/navbar %>
     <div class="profile mx-5 px-5">
-        <h4 class="mt-5">Welcome <%= user.name %></h4>
+        <h2 class="mt-5 text-center wow fadeInDown">Profile Details</h2>
         <form class="mx-auto d-form">
-            <div class="form-group">
+            <div class="form-group wow fadeInLeft">
               <label class="text-white" for="name">Name</label>
               <input
                 class="form-control d-fc"
@@ -11,7 +11,7 @@
                 disabled
               />
             </div>
-            <div class="form-group mt-5">
+            <div class="form-group mt-5 wow fadeInRight">
               <label class="text-white" for="email">Email</label>
               <input
                 class="form-control d-fc"
@@ -19,7 +19,7 @@
                 disabled
               />
             </div>
-            <div class="form-group mt-5">
+            <div class="form-group mt-5 wow fadeInLeft">
               <label class="text-white" for="address">Address</label>
               <input
                 class="form-control d-fc"
@@ -27,7 +27,7 @@
                 disabled
               />
             </div>
-            <div class="form-group mt-5">
+            <div class="form-group mt-5 wow fadeInRight">
               <label class="text-white" for="age">Age</label>
               <input
                 class="form-control d-fc"
@@ -35,7 +35,7 @@
                 disabled
               />
             </div>
-            <div class="form-group mt-5">
+            <div class="form-group mt-5 wow fadeInLeft">
               <label class="text-white" for="mobile">Mobile</label>
               <input
                 class="form-control d-fc"
