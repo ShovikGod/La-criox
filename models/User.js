@@ -18,21 +18,20 @@ const UserSchema = new mongoose.Schema({
     minimum: 0,
     required: true,
   },
-  /*gender: {
-    type: String,
-    enum: ["M", "F", "NA"],
-    required: false,
-  },*/
   password: {
     type: String,
     required: true,
   },
-  /*img: {
-    type: String,
-    required: true,
-  },*/
   mobile: {
     type: Number,
+    required: true,
+  },
+  sq: {
+    type: String,
+    required: true
+  },
+  sans: {
+    type: String,
     required: true,
   },
   date: {
